@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>100 Razones</title>
+  <link rel="icon" href="./img/icono.png" type="image/x-icon">
+  <link rel="stylesheet" href="./css/index.css"/>
+</head>
+<body>
+  <div>
+    <h1>100 Razones para volver con mi ex</h1>
+  </div>
+
+  <a id="btn-razones" class="boton" href="./razones.html">Ver Razones</a>
+  <p>Si quieres ver el motivo primero leete las 100 razones</p>
+  <a id="btn-no" class="boton disabled" href="./norazon.html">Ver el motivo por el cual no</a>
+
+  <script>
+    const btnRazones = document.getElementById('btn-razones');
+    const btnNo = document.getElementById('btn-no');
+
+    if (localStorage.getItem('visitedRazones')) {
+      btnNo.classList.remove('disabled');
+    }
+
+    btnRazones.addEventListener('click', () => {
+      localStorage.setItem('visitedRazones', 'true');
+      btnNo.classList.remove('disabled');
+    });
+
+    btnNo.addEventListener('click', (e) => {
+      if (btnNo.classList.contains('disabled')) {
+        e.preventDefault(); // cancela la redirección
+      }
+    });
+  </script>
+</body>
+</html>
